@@ -4,6 +4,7 @@ import { toast } from "react-toastify";
 import Balance from "../Balance";
 import TransactionHistory from "../TransactionHistory";
 import styles from "./Dashboard.module.css";
+import localStorageHandler from "../../services/localStorageHandler";
 
 const uuidv4 = require("uuid/v4");
 
@@ -17,6 +18,19 @@ export default class Dashboard extends Component {
     transactions: [],
     balance: 0
   };
+
+  componentDidMount() {
+    const accountState = localStorageHandler.get("accountState");
+    if (accountState) {
+      this.setState(accountState);
+    }
+  }
+
+  componentDidUpdate(prevprops, prevstate) {
+    if (prevstate !== this.state) {
+      localStorageHandler.save("accountState", this.state);
+    }
+  }
 
   addTransaction = (amount, type) => {
     const transaction = {
