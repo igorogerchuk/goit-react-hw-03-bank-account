@@ -1,0 +1,19 @@
+.balance {
+  min-height: 80px;
+  padding: 24px;
+  font-weight: 500;
+}
+
+span {
+  margin-right: 30px;
+}
+
+span[aria-label="arrow up"] {
+  color: green;
+  margin-right: 0px;
+}
+
+span[aria-label="arrow down"] {
+  color: red;
+  margin-right: 0px;
+}

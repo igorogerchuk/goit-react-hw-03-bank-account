@@ -1,0 +1,21 @@
+.history {
+  border-collapse: collapse;
+  margin: 0 auto;
+}
+
+td,
+th {
+  border: 2px solid rgb(230, 230, 230);
+  padding: 24px 16px;
+  width: 240px;
+}
+
+td::first-letter {
+  text-transform: uppercase;
+}
+
+th {
+  padding: 24px 16px;
+  text-align: center;
+  background-color: rgb(220, 220, 220);
+}
