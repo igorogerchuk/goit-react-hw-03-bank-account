@@ -1,35 +1,25 @@
-import React, { Component } from "react";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import styles from "./Controls.module.css";
+import React, { Component } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import styles from './Controls.module.css';
 
 export default class Controls extends Component {
   state = {
-    amount: ""
+    amount: '',
   };
 
   handleInput = e => {
     this.setState({ amount: e.currentTarget.value });
   };
 
-  handleDepositButton = () => {
+  handleTransaction = e => {
     const { amount } = this.state;
     if (amount <= 0) {
-      toast.error("Введите сумму для проведения операции!");
+      toast.error('Введите сумму для проведения операции!');
       return;
     }
-    this.props.onDeposit(amount);
-    this.setState({ amount: "" });
-  };
-
-  handleWithdrawButton = () => {
-    const { amount } = this.state;
-    if (amount <= 0) {
-      toast.error("Введите сумму для проведения операции!");
-      return;
-    }
-    this.props.onWithdraw(this.state.amount);
-    this.setState({ amount: "" });
+    this.props.onButton(e, amount);
+    this.setState({ amount: '' });
   };
 
   render() {
@@ -42,10 +32,10 @@ export default class Controls extends Component {
           value={amount}
           onChange={this.handleInput}
         />
-        <button type="button" onClick={this.handleDepositButton}>
+        <button type="button" onClick={this.handleTransaction}>
           Deposit
         </button>
-        <button type="button" onClick={this.handleWithdrawButton}>
+        <button type="button" onClick={this.handleTransaction}>
           Withdraw
         </button>
         <ToastContainer
